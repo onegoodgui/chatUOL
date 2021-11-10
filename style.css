@@ -1,0 +1,117 @@
+*{
+    box-sizing: content-box;
+}
+
+html{
+    display: flex;
+    justify-content: center;
+    background-color: #FFF;
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    width: 375px;
+    height: inherit;
+    background-color: #F3F3F3;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+header, footer{
+    background-color: #FFF;
+    width: inherit;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+
+}
+header{
+    top: 0px;
+}
+
+footer{
+    bottom: 0px;
+}
+header .container, footer .container{
+
+    height: fit-content;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .container ion-icon{
+    font-size: 45px;
+}
+
+main{
+    width: 100%;
+    height: inherit;
+    padding-top: 105px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* main .container{
+    display: flex;
+    justify-content: center;
+} */
+main .container{
+    padding: 15px 0 15px 0;
+    height: fit-content;
+    width: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+main .container.status{
+    background-color: #DCDCDC;
+}
+
+main .container.private_message{
+    background-color: #FFDEDE;
+}
+
+main .container.message{
+    background-color: #FFF;
+}
+
+.mensagem{
+    width: 90%;
+}    
+
+main .container p{
+    font-size: 14px;
+}
+.horario{
+
+}
+main strong{
+    font-weight: 700;
+}
+footer input{
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    height: inherit;
+    width: auto;
+    font-size: 18px;
+    font-weight: 400;                                                                                                                                                               
+    background-color: transparent;
+} 
+
+footer ion-icon{
+    font-size: 26px;
+}
