@@ -296,10 +296,10 @@ function iconeTo(click){
 
    to = container.innerText;
 
+
     if(click.parentNode === checkTodos.parentNode && checkTypePrivado.classList.contains("hidden") === false){
         checkTypePublico.classList.remove("hidden");
         checkTypePrivado.classList.add("hidden");
-        
     }
 
    if(checkTodos.classList.contains("hidden") === false){
@@ -326,6 +326,9 @@ function iconeTo(click){
        check.classList.remove("hidden")
    }
 
+   if(click.parentNode === checkTodos.parentNode && checkTypePublico.classList.contains("hidden") === false && checkTodos.classList.contains("hidden")){
+        checkTodos.classList.toggle("hidden") 
+    }
 
 }
 
@@ -336,6 +339,11 @@ function iconeType(click){
     checkTodos = document.querySelector(".container.todos ion-icon.check");
     checkTypePublico = document.querySelector(".container.type.public ion-icon.check")
     checkTypePrivado = document.querySelector(".container.type.private ion-icon.check")
+
+    if(click.parentNode === checkTypePrivado.parentNode && checkTypePublico.classList.contains("hidden") === false && checkTodos.classList.contains("hidden") == false){
+        type = "message";
+        return
+    }
 
     if(type === "Reservadamente"){
         type = "private_message";

@@ -70,10 +70,7 @@ main::-webkit-scrollbar{
     background: transparent;  /* Optional: just make scrollbar invisible */
 }
 
-/* main .container{
-    display: flex;
-    justify-content: center;
-} */
+
 main .container{
     padding: 15px 0 15px 0;
     height: fit-content;
@@ -99,6 +96,7 @@ main .container.message{
 
 .mensagem{
     width: 90%;
+    height: fit-content;
 }    
 
 main .container p{
@@ -258,6 +256,8 @@ footer ion-icon{
     align-items: center;
     justify-content: flex-start;
     position: relative;
+    box-sizing: border-box;
+    flex-shrink: 0;
 }
 
 .sidebar ion-icon{
@@ -287,6 +287,18 @@ ion-icon.check{
     width: 90%;
     justify-content: flex-start;
     position: relative;
+    overflow-y: scroll;
+    height: 350px;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 200px;
+
+  }
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #c2c9d2;
 }
 
 .sidebar .usuarios .container{
@@ -305,3 +317,13 @@ p.grande{
 p span{
     color: #AAAAAA
 }
+
+main .container .mensagem p{
+    height: fit-content;
+    overflow: hidden;
+    text-overflow: unset;
+    white-space: unset;
+    line-height: 1.4;
+    text-align: justify;
+}
+
