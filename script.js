@@ -83,14 +83,14 @@ function atualizarParticipantes(resposta){
         for(i=0; i<arrayParticipantesAntigos.length;i++){
             if(arrayParticipantesAntigos[i].name.length < 16){
                 
-                usuarios.innerHTML = usuarios.innerHTML + `<div class="container" >
+                usuarios.innerHTML = usuarios.innerHTML + `<div class="container" data-identifier="participant" >
                 <ion-icon onclick = "iconeTo(this)" name="person-circle"></ion-icon>
                 <p onclick = "iconeTo(this)">${arrayParticipantesAntigos[i].name}</p>
                 <ion-icon class="check hidden" name="checkmark-outline"></ion-icon>
                 </div>`
             }
             else{
-                usuarios.innerHTML = usuarios.innerHTML + `<div class="container" >
+                usuarios.innerHTML = usuarios.innerHTML + `<div class="container" data-identifier="participant" >
                 <ion-icon onclick = "iconeTo(this)" name="person-circle"></ion-icon>
                 <p class="grande" onclick = "iconeTo(this)">${arrayParticipantesAntigos[i].name}</p>
                 <ion-icon class="check hidden" name="checkmark-outline"></ion-icon>
@@ -144,14 +144,14 @@ function atualizarParticipantes(resposta){
             for (i = 0; i < usuariosQueEntraram.length; i++){
                 if(usuariosQueEntraram[i].name.length < 16){
                     
-                    usuarios.innerHTML = usuarios.innerHTML + `<div class="container" >
+                    usuarios.innerHTML = usuarios.innerHTML + `<div class="container" data-identifier="participant">
                     <ion-icon onclick = "iconeTo(this)" name="person-circle"></ion-icon>
                     <p onclick = "iconeTo(this)">${usuariosQueEntraram[i].name}</p>
                     <ion-icon class="check hidden" name="checkmark-outline"></ion-icon>
                     </div>`
                 }
                 else{
-                    usuarios.innerHTML = usuarios.innerHTML + `<div class="container" >
+                    usuarios.innerHTML = usuarios.innerHTML + `<div class="container" data-identifier="participant">
                     <ion-icon onclick = "iconeTo(this)" name="person-circle"></ion-icon>
                     <p class="grande" onclick = "iconeTo(this)">${usuariosQueEntraram[i].name}</p>
                     <ion-icon class="check hidden" name="checkmark-outline"></ion-icon>
@@ -193,7 +193,7 @@ function carregarMensagens(objeto){
             }
             else{
                 if(objeto[i].type === "message"){
-                    main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" >
+                    main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" data-identifier="message">
                                                             <div class="mensagem">
                                                                     <p>(${objeto[i].time})  <strong>${objeto[i].from}</strong> para <strong>${objeto[i].to}</strong>: ${objeto[i].text}</p>
                                                             </div>
@@ -201,7 +201,7 @@ function carregarMensagens(objeto){
                 }
                 else if(objeto[i].type === "private_message"){
 
-                    main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" >
+                    main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" data-identifier="message">
                                                             <div class="mensagem">
                                                                 <p>(${objeto[i].time})  <strong>${objeto[i].from}</strong> reservadamente para <strong>${objeto[i].to}</strong>: ${objeto[i].text} </p>
                                                             </div>
@@ -209,7 +209,7 @@ function carregarMensagens(objeto){
                                                         `   
                 }
                 else{
-                    main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" >
+                    main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" data-identifier="message">
                                                             <div class="mensagem">
                                                                 <p>(${objeto[i].time})  <strong>${objeto[i].from}</strong>  ${objeto[i].text} </p>
                                                             </div>
@@ -229,7 +229,7 @@ function carregarMensagens(objeto){
             }
             else{
                 if(objeto[i].type === "message"){
-                    main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" >
+                    main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" data-identifier="message">
                                                             <div class="mensagem">
                                                                     <p>(${objeto[i].time})  <strong>${objeto[i].from}</strong> para <strong>${objeto[i].to}</strong>: ${objeto[i].text}</p>
                                                             </div>
@@ -237,7 +237,7 @@ function carregarMensagens(objeto){
                 }
                 else if(objeto[i].type === "private_message"){
 
-                    main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" >
+                    main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" data-identifier="message">
                                                             <div class="mensagem">
                                                                 <p>(${objeto[i].time})  <strong>${objeto[i].from}</strong> reservadamente para <strong>${objeto[i].to}</strong>: ${objeto[i].text} </p>
                                                             </div>
@@ -245,9 +245,9 @@ function carregarMensagens(objeto){
                                                         `   
                 }
                 else{
-                    main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" >
+                    main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" data-identifier="message">
                                                             <div class="mensagem">
-                                                                <p>(${objeto[i].time})  <strong>${objeto[i].from}</strong>  ${objeto[i].text} </p>
+                                                                <p><span>(${objeto[i].time})</span>  <strong>${objeto[i].from}</strong>  ${objeto[i].text} </p>
                                                             </div>
                                                         </div>
                                                         `   

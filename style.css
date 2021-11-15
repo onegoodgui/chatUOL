@@ -274,10 +274,6 @@ footer ion-icon{
     width: 90%;
 }
 
-p .cinza{
-    color: beige;
-}
-
 ion-icon.check{
     position: absolute;
     right: 0px;
@@ -304,4 +300,8 @@ p.grande{
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+}
+
+p span{
+    color: #AAAAAA
 }
