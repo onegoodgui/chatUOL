@@ -195,7 +195,7 @@ function carregarMensagens(objeto){
                 if(objeto[i].type === "message"){
                     main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" data-identifier="message">
                                                             <div class="mensagem">
-                                                                    <p>(${objeto[i].time})  <strong>${objeto[i].from}</strong> para <strong>${objeto[i].to}</strong>: ${objeto[i].text}</p>
+                                                                    <p><span>(${objeto[i].time})</span>  <strong>${objeto[i].from}</strong> para <strong>${objeto[i].to}</strong>: ${objeto[i].text}</p>
                                                             </div>
                                                         </div>`
                 }
@@ -203,7 +203,7 @@ function carregarMensagens(objeto){
 
                     main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" data-identifier="message">
                                                             <div class="mensagem">
-                                                                <p>(${objeto[i].time})  <strong>${objeto[i].from}</strong> reservadamente para <strong>${objeto[i].to}</strong>: ${objeto[i].text} </p>
+                                                                <p><span>(${objeto[i].time})</span>  <strong>${objeto[i].from}</strong> reservadamente para <strong>${objeto[i].to}</strong>: ${objeto[i].text} </p>
                                                             </div>
                                                         </div>
                                                         `   
@@ -211,7 +211,7 @@ function carregarMensagens(objeto){
                 else{
                     main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" data-identifier="message">
                                                             <div class="mensagem">
-                                                                <p>(${objeto[i].time})  <strong>${objeto[i].from}</strong>  ${objeto[i].text} </p>
+                                                                <p><span>(${objeto[i].time})</span>  <strong>${objeto[i].from}</strong>  ${objeto[i].text} </p>
                                                             </div>
                                                         </div>
                                                         `   
@@ -231,7 +231,7 @@ function carregarMensagens(objeto){
                 if(objeto[i].type === "message"){
                     main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" data-identifier="message">
                                                             <div class="mensagem">
-                                                                    <p>(${objeto[i].time})  <strong>${objeto[i].from}</strong> para <strong>${objeto[i].to}</strong>: ${objeto[i].text}</p>
+                                                                <p><span>(${objeto[i].time})</span>  <strong>${objeto[i].from}</strong> para <strong>${objeto[i].to}</strong>: ${objeto[i].text}</p>
                                                             </div>
                                                         </div>`
                 }
@@ -239,7 +239,7 @@ function carregarMensagens(objeto){
 
                     main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" data-identifier="message">
                                                             <div class="mensagem">
-                                                                <p>(${objeto[i].time})  <strong>${objeto[i].from}</strong> reservadamente para <strong>${objeto[i].to}</strong>: ${objeto[i].text} </p>
+                                                                <p><span>(${objeto[i].time})</span>  <strong>${objeto[i].from}</strong> reservadamente para <strong>${objeto[i].to}</strong>: ${objeto[i].text} </p>
                                                             </div>
                                                         </div>
                                                         `   
