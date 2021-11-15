@@ -23,12 +23,16 @@
      <!-- Tela de entrada! -->
     <div class="tela-de-entrada">
         <div class="container">
+
             <img src="Imagens/logo 1.png" alt="">
             <input type="text" placeholder="Digite seu nome">
+
             <button onclick="verificarNome(this)" > Entrar </button>
+
             <div class="nome-invalido fade-in hidden">
-                <p>Este nome já está sendo utilizado</p> 
+                <p>Este nome já está sendo utilizado ou é inválido</p> 
             </div>
+
         </div>
     </div>
     <!-- Tela de entrada!  -->
@@ -46,12 +50,12 @@
         <h1> Escolha a visibilidade</h1>
 
         
-            <div class="container type public">
+            <div class="container type public" >
                 <ion-icon onclick="iconeType(this)" name="lock-open"></ion-icon>
                 <p onclick="iconeType(this)">Público</p>
                 <ion-icon class="check" name="checkmark-outline"></ion-icon>
             </div>
-            <div class="container type private">
+            <div class="container type private" >
                 <ion-icon onclick="iconeType(this)" name="lock-closed"></ion-icon>
                 <p onclick="iconeType(this)">Reservadamente</p>
                 <ion-icon class="check hidden" name="checkmark-outline"></ion-icon>
@@ -71,7 +75,7 @@
 
     <footer>
         <div class="container">
-            <input type="text" placeholder="Escreva aqui...">
+            <input type="text" placeholder="Escreva aqui..." >
             <ion-icon name="paper-plane-outline" onclick="requisitarMensagem()"></ion-icon>
         </div>
     </footer>

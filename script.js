@@ -3,7 +3,6 @@
 let nomeUsuario = "";
 let to = 'Todos';    
 let type = 'message';
-let arrayCheckEscondido = [];
 let arrayParticipantesAntigos = [];
 // console.log(main);
 
@@ -23,7 +22,7 @@ function verificarNome(nomeInserido){
 }
 
 function nomeIndisponivel(){
-    document.querySelector(".nome-invalido").classList.remove(hidden);
+    document.querySelector(".nome-invalido").classList.remove("hidden");
 }
 
 
@@ -84,14 +83,14 @@ function atualizarParticipantes(resposta){
         for(i=0; i<arrayParticipantesAntigos.length;i++){
             if(arrayParticipantesAntigos[i].name.length < 16){
                 
-                usuarios.innerHTML = usuarios.innerHTML + `<div class="container">
+                usuarios.innerHTML = usuarios.innerHTML + `<div class="container" >
                 <ion-icon onclick = "iconeTo(this)" name="person-circle"></ion-icon>
                 <p onclick = "iconeTo(this)">${arrayParticipantesAntigos[i].name}</p>
                 <ion-icon class="check hidden" name="checkmark-outline"></ion-icon>
                 </div>`
             }
             else{
-                usuarios.innerHTML = usuarios.innerHTML + `<div class="container">
+                usuarios.innerHTML = usuarios.innerHTML + `<div class="container" >
                 <ion-icon onclick = "iconeTo(this)" name="person-circle"></ion-icon>
                 <p class="grande" onclick = "iconeTo(this)">${arrayParticipantesAntigos[i].name}</p>
                 <ion-icon class="check hidden" name="checkmark-outline"></ion-icon>
@@ -145,14 +144,14 @@ function atualizarParticipantes(resposta){
             for (i = 0; i < usuariosQueEntraram.length; i++){
                 if(usuariosQueEntraram[i].name.length < 16){
                     
-                    usuarios.innerHTML = usuarios.innerHTML + `<div class="container">
+                    usuarios.innerHTML = usuarios.innerHTML + `<div class="container" >
                     <ion-icon onclick = "iconeTo(this)" name="person-circle"></ion-icon>
                     <p onclick = "iconeTo(this)">${usuariosQueEntraram[i].name}</p>
                     <ion-icon class="check hidden" name="checkmark-outline"></ion-icon>
                     </div>`
                 }
                 else{
-                    usuarios.innerHTML = usuarios.innerHTML + `<div class="container">
+                    usuarios.innerHTML = usuarios.innerHTML + `<div class="container" >
                     <ion-icon onclick = "iconeTo(this)" name="person-circle"></ion-icon>
                     <p class="grande" onclick = "iconeTo(this)">${usuariosQueEntraram[i].name}</p>
                     <ion-icon class="check hidden" name="checkmark-outline"></ion-icon>
@@ -165,29 +164,6 @@ function atualizarParticipantes(resposta){
     }
 }
 
-    // }
-    
-    // else {
-    //     usuarios.innerHTML = "";
-    //     let arrayParticipantes = resposta.data;
-    //     for(let i=0; i<arrayParticipantes.length;i++){
-    //         if(arrayParticipantes[i].name.length < 16){
-
-    //             usuarios.innerHTML = usuarios.innerHTML + `<div class="container">
-    //                                                             <ion-icon onclick = "iconeTo(this)" name="person-circle"></ion-icon>
-    //                                                             <p onclick = "iconeTo(this)">${arrayParticipantes[i].name}</p>
-    //                                                             <ion-icon class="check hidden" name="checkmark-outline"></ion-icon>
-    //                                                         </div>`
-    //         }
-    //         else{
-    //             usuarios.innerHTML = usuarios.innerHTML + `<div class="container">
-    //                                                             <ion-icon onclick = "iconeTo(this)" name="person-circle"></ion-icon>
-    //                                                             <p class="grande" onclick = "iconeTo(this)">${arrayParticipantes[i].name}</p>
-    //                                                             <ion-icon class="check hidden" name="checkmark-outline"></ion-icon>
-    //                                                         </div>`
-    //         }
-    //     }   
-    // }
 
 
 // Quando a promessa retorna, executa esta função
@@ -206,50 +182,88 @@ function processarResposta(respostaCarregarServidor) {
 
 function carregarMensagens(objeto){
     let main = document.querySelector("main");
-
+    let i = 0;
 
     if(main.innerHTML === ""){
         
 
-        for (let i = 0; i < objeto.length; i++) {
-            
-            main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}">
-            <div class="mensagem">
-            <p>(${objeto[i].time})  <strong>${objeto[i].from}</strong>  ${objeto[i].text} </p>
-            </div>
-            </div>
-            `   
+        for (i = 0; i < objeto.length; i++) {
+            if(objeto[i].type === "private_message" && (objeto[i].from !== nomeUsuario.name || objeto[i].to !== nomeUsuario.name)){
+                continue
+            }
+            else{
+                if(objeto[i].type === "message"){
+                    main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" >
+                                                            <div class="mensagem">
+                                                                    <p>(${objeto[i].time})  <strong>${objeto[i].from}</strong> para <strong>${objeto[i].to}</strong>: ${objeto[i].text}</p>
+                                                            </div>
+                                                        </div>`
+                }
+                else if(objeto[i].type === "private_message"){
+
+                    main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" >
+                                                            <div class="mensagem">
+                                                                <p>(${objeto[i].time})  <strong>${objeto[i].from}</strong> reservadamente para <strong>${objeto[i].to}</strong>: ${objeto[i].text} </p>
+                                                            </div>
+                                                        </div>
+                                                        `   
+                }
+                else{
+                    main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" >
+                                                            <div class="mensagem">
+                                                                <p>(${objeto[i].time})  <strong>${objeto[i].from}</strong>  ${objeto[i].text} </p>
+                                                            </div>
+                                                        </div>
+                                                        `   
+                }
+            }
         }
     }
     else if(main.innerHTML !== ""){
 
         main.innerHTML = "";
 
-        for (let i = 0; i < objeto.length; i++) {
-            
-            main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}">
-            <div class="mensagem">
-            <p>(${objeto[i].time})  <strong>${objeto[i].from}</strong>  ${objeto[i].text} </p>
-            </div>
-            </div>
-            `   
-        }
+        for (i = 0; i < objeto.length; i++) {
+            if(objeto[i].type === "private_message" && (objeto[i].from !== nomeUsuario.name || objeto[i].to !== nomeUsuario.name)){
+                continue
+            }
+            else{
+                if(objeto[i].type === "message"){
+                    main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" >
+                                                            <div class="mensagem">
+                                                                    <p>(${objeto[i].time})  <strong>${objeto[i].from}</strong> para <strong>${objeto[i].to}</strong>: ${objeto[i].text}</p>
+                                                            </div>
+                                                        </div>`
+                }
+                else if(objeto[i].type === "private_message"){
 
-        
+                    main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" >
+                                                            <div class="mensagem">
+                                                                <p>(${objeto[i].time})  <strong>${objeto[i].from}</strong> reservadamente para <strong>${objeto[i].to}</strong>: ${objeto[i].text} </p>
+                                                            </div>
+                                                        </div>
+                                                        `   
+                }
+                else{
+                    main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" >
+                                                            <div class="mensagem">
+                                                                <p>(${objeto[i].time})  <strong>${objeto[i].from}</strong>  ${objeto[i].text} </p>
+                                                            </div>
+                                                        </div>
+                                                        `   
+                }
+            }
+        }   
     }
 }
 
 function requisitarMensagem(){
     
-    let inputClass = document.querySelector(".tela-de-entrada .container input");
-    let inputClassValue = inputClass.value;
+    
+    const from = nomeUsuario.name;
     let text = document.querySelector("footer .container input").value;
-    const from = inputClassValue;
-    msg = {from, to, text, type};
 
-    function Todos(botao){
-        console.log(botao.innerHTML)
-    }
+    msg = {from, to, text, type};
 
     const reqMsg = axios.post(`https://mock-api.driven.com.br/api/v4/uol/messages`,msg);
     document.querySelector("footer .container input").value = "";
@@ -272,7 +286,6 @@ function opcoes(){
 
 function iconeTo(click){
    let container = click.parentNode;
-   to  = container.innerText;
    check = container.querySelector("ion-icon.check")
    usuarios = document.querySelectorAll(".usuarios .container")
    checkTodos = document.querySelector(".container.todos ion-icon.check")
@@ -280,6 +293,8 @@ function iconeTo(click){
    checkUsuarios = document.querySelectorAll(".usuarios .container ion-icon.check");
    checkTypePublico = document.querySelector(".container.type.public ion-icon.check")
    checkTypePrivado = document.querySelector(".container.type.private ion-icon.check")
+
+   to = container.innerText;
 
     if(click.parentNode === checkTodos.parentNode && checkTypePrivado.classList.contains("hidden") === false){
         checkTypePublico.classList.remove("hidden");
@@ -321,6 +336,13 @@ function iconeType(click){
     checkTodos = document.querySelector(".container.todos ion-icon.check");
     checkTypePublico = document.querySelector(".container.type.public ion-icon.check")
     checkTypePrivado = document.querySelector(".container.type.private ion-icon.check")
+
+    if(type === "Reservadamente"){
+        type = "private_message";
+    }
+    else{
+        type = "message";
+    }
     
     if (checkTypePublico.classList.contains("hidden") === false){
         checkTypePublico.classList.add("hidden");
@@ -332,16 +354,27 @@ function iconeType(click){
         check.classList.toggle("hidden");
         return
     }
+}
 
+const inputMensagem = document.querySelector("footer .container input");
+inputMensagem.addEventListener("keyup", MandarMensagemComEnter);
+const inputNome = document.querySelector(".tela-de-entrada .container input");
+inputNome.addEventListener("keyup", MandarNomeComEnter);
+botao = inputNome.parentNode.querySelector("button");
 
-    if(click.parentNode.innerText === "Reservadamente"){
-        type = "private-message";
-    }
-    else{
-        type = "message";
+function MandarMensagemComEnter(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        requisitarMensagem()
     }
 }
 
+function MandarNomeComEnter(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        verificarNome(botao)
+    }
+}
 // function mensagensAntigas(listaDeMensagens){
 //     for(i = 0; i<listaDeMensagensAntigas.length; i++){
 //         if(listaDeMensagens === listaDeMensagensAntigas[i]){

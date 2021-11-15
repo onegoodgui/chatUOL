@@ -103,6 +103,7 @@ main .container.message{
 
 main .container p{
     font-size: 14px;
+    height: 16px;
 }
 /* .horario{
 
@@ -127,7 +128,7 @@ footer ion-icon{
 
 .tela-de-entrada{
     position: absolute;
-    background-color: lightgreen;
+    background-color: white;
     width: 100%;
     height: 100%;
     z-index: 2;
@@ -174,19 +175,26 @@ footer ion-icon{
 
 .nome-invalido{
 
-    height: 40px;
+    height: 80px;
     background-color: navy;
     padding: 0 10px 0 10px;
     margin-top: 15px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     border-radius: 6px;
+    text-align: center;
+    width: 70%;
+    display: flex;
+    justify-content: center;
 }
 
-.nome-invalido p{
+.container .nome-invalido p{
 
     color: oldlace;
     font-size: 20px;
+    overflow: unset;
+    white-space: unset;
 }
 
 .fade-in {
