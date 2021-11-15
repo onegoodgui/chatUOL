@@ -205,4 +205,95 @@ footer ion-icon{
 
 .hidden{
     display: none;
+    visibility: hidden;
+}
+
+.opcoes{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #000000;
+    opacity: 0.6;
+    z-index: 2;
+}
+
+.sidebar{
+    position: absolute;
+    right: 0px;
+    width: 260px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 3;
+    background-color: white;
+    align-items: center;
+}
+
+.sidebar h1{
+    height: 85px;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    box-sizing: border-box;
+    
+}
+
+.sidebar .container{
+    display: flex;
+    flex-direction: row;
+    height: 36px;
+    width: 90%;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.sidebar ion-icon{
+    font-size: 25px;
+    padding-right: 10px;
+}
+
+.container p{
+    font-size: 16px;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 90%;
+}
+
+p .cinza{
+    color: beige;
+}
+
+ion-icon.check{
+    position: absolute;
+    right: 0px;
+    color: green;
+    font-weight: bold;
+}
+
+.sidebar .usuarios{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.sidebar .usuarios .container{
+    width: 100%;
+}
+
+p.grande{
+    width: 65%;
+    font-size: 16px;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
