@@ -188,10 +188,8 @@ function carregarMensagens(objeto){
         
 
         for (i = 0; i < objeto.length; i++) {
-            if(objeto[i].type === "private_message" && (objeto[i].from !== nomeUsuario.name || objeto[i].to !== nomeUsuario.name)){
-                continue
-            }
-            else{
+
+            
                 if(objeto[i].type === "message"){
                     main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" data-identifier="message">
                                                             <div class="mensagem">
@@ -201,12 +199,18 @@ function carregarMensagens(objeto){
                 }
                 else if(objeto[i].type === "private_message"){
 
-                    main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" data-identifier="message">
-                                                            <div class="mensagem">
-                                                                <p><span>(${objeto[i].time})</span>  <strong>${objeto[i].from}</strong> reservadamente para <strong>${objeto[i].to}</strong>: ${objeto[i].text} </p>
-                                                            </div>
-                                                        </div>
-                                                        `   
+                    if(objeto[i].from === nomeUsuario.name || objeto[i].to === nomeUsuario.name){
+                        main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" data-identifier="message">
+                        <div class="mensagem">
+                            <p><span>(${objeto[i].time})</span>  <strong>${objeto[i].from}</strong> reservadamente para <strong>${objeto[i].to}</strong>: ${objeto[i].text} </p>
+                        </div>
+                        </div>`
+                    }
+                    else{
+                        continue
+                    }
+
+                                                        
                 }
                 else{
                     main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" data-identifier="message">
@@ -216,34 +220,37 @@ function carregarMensagens(objeto){
                                                         </div>
                                                         `   
                 }
-            }
         }
     }
+    
     else if(main.innerHTML !== ""){
 
         main.innerHTML = "";
 
         for (i = 0; i < objeto.length; i++) {
-            if(objeto[i].type === "private_message" && (objeto[i].from !== nomeUsuario.name || objeto[i].to !== nomeUsuario.name)){
-                continue
-            }
-            else{
-                if(objeto[i].type === "message"){
+
+        
+            if(objeto[i].type === "message"){
                     main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" data-identifier="message">
                                                             <div class="mensagem">
                                                                 <p><span>(${objeto[i].time})</span>  <strong>${objeto[i].from}</strong> para <strong>${objeto[i].to}</strong>: ${objeto[i].text}</p>
                                                             </div>
                                                         </div>`
                 }
-                else if(objeto[i].type === "private_message"){
+            else if(objeto[i].type === "private_message"){
 
+                if(objeto[i].from === nomeUsuario.name || objeto[i].to === nomeUsuario.name){
                     main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" data-identifier="message">
-                                                            <div class="mensagem">
-                                                                <p><span>(${objeto[i].time})</span>  <strong>${objeto[i].from}</strong> reservadamente para <strong>${objeto[i].to}</strong>: ${objeto[i].text} </p>
-                                                            </div>
-                                                        </div>
-                                                        `   
+                        <div class="mensagem">
+                            <p><span>(${objeto[i].time})</span>  <strong>${objeto[i].from}</strong> reservadamente para <strong>${objeto[i].to}</strong>: ${objeto[i].text} </p>
+                        </div>
+                        </div>`
                 }
+                else{
+                    continue
+                }
+                                    
+            }
                 else{
                     main.innerHTML = main.innerHTML +   `<div class="container ${objeto[i].type}" data-identifier="message">
                                                             <div class="mensagem">
@@ -255,7 +262,7 @@ function carregarMensagens(objeto){
             }
         }   
     }
-}
+
 
 function requisitarMensagem(){
     
